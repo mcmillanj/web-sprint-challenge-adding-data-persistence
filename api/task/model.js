@@ -2,7 +2,7 @@
 const db = require("../../data/dbConfig.js")
 
 function find(){
-    return db("tasks as t")
+    return db("tasks as t" )
     .select("t.*", "p.project_name", "p.project_description")
     .leftJoin("projects as p", "t.project_id", "p.project_id")
 }
@@ -27,4 +27,4 @@ function insert(task){
 
 module.exports = {find,
      findById,
-      insert}
+      insert};

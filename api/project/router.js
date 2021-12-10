@@ -7,7 +7,9 @@ router.get("/", (req,res)=>{
     projects.find()
     .then(data=>{
         data.map(project=>{
-            project.project_completed ? project.project_completed = true : project.project_completed = false
+            project.project_completed ?
+             project.project_completed = true :
+              project.project_completed = false
             return project
         })
         res.status(200).json(data);
@@ -21,12 +23,14 @@ router.get("/", (req,res)=>{
 router.post("/", mw.validateProject, (req,res)=>{
     projects.insert(req.body)
     .then(project=>{
-        project.project_completed ? project.project_completed = true : project.project_completed = false
+        project.project_completed ?
+         project.project_completed = true :
+          project.project_completed = false
         res.status(201).json(project);
     })
     .catch(err=>{
         console.log(err);
-        res.status(500).json(err.message);
+        res.status(500).json( err.message);
     })
 })
 
